@@ -339,6 +339,6 @@ export default {
 }
 
 .social-media-link {
-  @apply p-3 hover:bg-gray-200 rounded-lg text-purple-500 transition-colors;
+  @apply p-3 hover:bg-purple-100 rounded-lg text-purple-500 transition-colors;
 }
 </style>

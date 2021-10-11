@@ -3,7 +3,17 @@
     <div class="my-5 flex place-content-center">
       <NuxtLink
         to="/vivianplasencia"
-        class="rounded-lg border-2 border-purple-600 text-purple-600 py-3 px-5 hover:bg-purple-600 transition-colors hover:text-white font-semibold"
+        class="
+          rounded-lg
+          border-2 border-purple-600
+          text-purple-600
+          py-3
+          px-5
+          hover:bg-purple-600
+          transition-colors
+          hover:text-white
+          font-semibold
+        "
         >Demo</NuxtLink
       >
     </div>
@@ -46,7 +56,7 @@
             hover:bg-purple-700
           "
         >
-          Analyze user
+          Analyze User
         </button>
       </div>
     </form>
@@ -61,6 +71,9 @@
       </div>
     </div> -->
     <!-- <Charts v-if="analyze" :userName="userName" /> -->
+
+
+
   </div>
 </template>
 

@@ -10,6 +10,9 @@ const GET_USER_ARTICLES = `
             publication {
                 posts(page: $page) {
                     dateAdded
+                    dateFeatured
+                    totalReactions
+                    title
                 }
             }
         }

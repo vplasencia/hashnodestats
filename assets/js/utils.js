@@ -74,3 +74,23 @@ export const MONTHS = [
   "November",
   "December"
 ];
+
+export function sortArrays(postsTitle, reactionsCount) {
+  var list = [];
+  for (let i = 0; i < postsTitle.length; i++) {
+    list.push({ postTitle: postsTitle[i], reactionsCount: reactionsCount[i] });
+  }
+
+  list.sort(function(a, b) {
+    return a.reactionsCount > b.reactionsCount
+      ? -1
+      : a.reactionsCount === b.reactionsCount
+      ? 0
+      : 1;
+  });
+
+  for (var k = 0; k < list.length; k++) {
+    postsTitle[k] = list[k].postTitle;
+    reactionsCount[k] = list[k].reactionsCount;
+  }
+}

@@ -10,11 +10,12 @@ export function buildRadarChart(htmlObjectId, labels, data, name) {
     ],
     chart: {
       height: "100%",
+      with: "100%",
       type: "radar"
     },
     grid: {
       padding: {
-        bottom: -75
+        bottom: -50
       }
     },
     fill: {
@@ -89,6 +90,9 @@ export function buildRadarChart(htmlObjectId, labels, data, name) {
     },
     yaxis: {
       labels: {
+        // formatter: function(val) {
+        //   return val.toFixed(0);
+        // },
         style: {
           fontSize: "12px"
         }
