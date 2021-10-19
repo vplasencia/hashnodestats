@@ -282,6 +282,57 @@ export default {
       },
     },
   },
+  head() {
+    return {
+      meta: [
+        {
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: this.user.name + "Hashnode Stats",
+        },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: this.user.name + "Hashnode Stats",
+        },
+        {
+          hid: "twitter:image",
+          name: "twitter:image",
+          content: this.user.photo,
+        },
+        {
+          hid: "twitter:image:alt",
+          name: "twitter:image:alt",
+          content: this.user.name + "Hashnode Stats",
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: this.user.name + "Hashnode Stats",
+        },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: this.user.name + "Hashnode Stats",
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: this.user.photo,
+        },
+        {
+          hid: "og:image:secure_url",
+          property: "og:image:secure_url",
+          content: this.user.photo,
+        },
+        {
+          hid: "og:image:alt",
+          property: "og:image:alt",
+          content: this.user.name + "Hashnode Stats"
+        },
+      ],
+    };
+  },
   data() {
     return {
       userName: null,
