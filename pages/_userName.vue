@@ -19,7 +19,10 @@
         </svg>
         <span>Go Home</span>
       </NuxtLink>
-      <div>Share</div>
+      <!-- <div>Share</div> -->
+      <div>
+        <ShareSocialMedia />
+      </div>
     </div>
     <div v-if="user">
       <div class="grid place-items-center gap-10">
