@@ -27,7 +27,11 @@
     <div v-if="user">
       <div class="grid place-items-center gap-10">
         <div class="img-profile-wrapper">
+          <div v-if="!user.photo">
+            <ChartPreloader />
+          </div>
           <img
+            v-else
             data-sizes="auto"
             loading="lazy"
             :src="
@@ -47,7 +51,7 @@
           <div class="font-semibold text-lg">
             {{ user.name }}
           </div>
-          <div>@{{ userName }}</div>
+          <div>@{{ user.username }}</div>
         </div>
 
         <div
@@ -262,6 +266,7 @@ export default {
             numFollowers
             photo
             name
+            username
             dateJoined
             numReactions
             socialMedia {
