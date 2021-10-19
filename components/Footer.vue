@@ -56,7 +56,7 @@
             <span>❤️</span>
             <span>by</span>
             <a
-              class="text-purple-700 hover:text-purple-800"
+              class="text-purple-700 hover:underline"
               href="https://twitter.com/ViviPlasenciaC"
               >Vivian Plasencia</a
             >

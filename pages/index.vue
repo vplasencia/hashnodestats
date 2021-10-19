@@ -36,28 +36,32 @@
             h-12
             px-3
             w-full
-            border-purple-300 border-2
+            border-purple-400 border-2
             rounded-lg
             focus:outline-none
             focus:border-purple-600
           "
         />
-        <button
-          type="submit"
-          class="
-            mt-5
-            w-full
-            py-3
-            px-5
-            bg-purple-600
-            text-white
-            rounded-lg
-            font-semibold
-            hover:bg-purple-700
-          "
-        >
-          Analyze User
-        </button>
+        <div class="flex justify-center">
+          <button
+            type="submit"
+            class="
+              justify-center
+              mt-5
+              rounded-lg
+              border-2 border-purple-600
+              py-3
+              px-5
+              bg-purple-600
+              transition-colors
+              text-white
+              font-semibold
+              hover:bg-purple-700
+            "
+          >
+            Analyze User
+          </button>
+        </div>
       </div>
     </form>
     <!-- <p>numFollowing: {{ user.numFollowing }}</p>
@@ -72,8 +76,7 @@
     </div> -->
     <!-- <Charts v-if="analyze" :userName="userName" /> -->
 
-
-
+    <ContactForm />
   </div>
 </template>
 

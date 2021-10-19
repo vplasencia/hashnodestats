@@ -18,7 +18,6 @@ export default {};
 
 <style scoped>
 nav {
-  /* @apply flex justify-between items-center py-2 pl-3 pr-3 fixed w-full bg-white shadow-md z-50; */
   @apply flex justify-between items-center py-3 pl-3 pr-3 w-full;
 }
 

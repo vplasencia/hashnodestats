@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mx-5 my-10">
+    <div class="mx-5 my-10 flex items-center justify-between">
       <NuxtLink to="/" class="btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -19,6 +19,7 @@
         </svg>
         <span>Go Home</span>
       </NuxtLink>
+      <div>Share</div>
     </div>
     <div v-if="user">
       <div class="grid place-items-center gap-10">
