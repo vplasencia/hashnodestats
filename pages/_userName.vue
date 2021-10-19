@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="min-h-screen">
     <div class="mx-2 md:mx-5 my-10 flex items-center justify-between">
       <NuxtLink to="/" class="btn">
         <svg
@@ -288,47 +288,47 @@ export default {
         {
           hid: "twitter:title",
           name: "twitter:title",
-          content: this.user.name + "Hashnode Stats",
+          content: "Hashnode Stats",
         },
         {
           hid: "twitter:description",
           name: "twitter:description",
-          content: this.user.name + "Hashnode Stats",
+          content: "Hashnode Stats",
         },
         {
           hid: "twitter:image",
           name: "twitter:image",
-          content: this.user.photo,
+          content: "https://cdn.hashnode.com/res/hashnode/image/upload/v1630599680062/Qimc1XQGV.jpeg",
         },
         {
           hid: "twitter:image:alt",
           name: "twitter:image:alt",
-          content: this.user.name + "Hashnode Stats",
+          content: "Hashnode Stats",
         },
         {
           hid: "og:title",
           property: "og:title",
-          content: this.user.name + "Hashnode Stats",
+          content: "Hashnode Stats",
         },
         {
           hid: "og:description",
           property: "og:description",
-          content: this.user.name + "Hashnode Stats",
+          content: "Hashnode Stats",
         },
         {
           hid: "og:image",
           property: "og:image",
-          content: this.user.photo,
+          content: "https://cdn.hashnode.com/res/hashnode/image/upload/v1630599680062/Qimc1XQGV.jpeg",
         },
         {
           hid: "og:image:secure_url",
           property: "og:image:secure_url",
-          content: this.user.photo,
+          content: "https://cdn.hashnode.com/res/hashnode/image/upload/v1630599680062/Qimc1XQGV.jpeg",
         },
         {
           hid: "og:image:alt",
           property: "og:image:alt",
-          content: this.user.name + "Hashnode Stats"
+          content: "Hashnode Stats"
         },
       ],
     };
