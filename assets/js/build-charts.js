@@ -20,12 +20,32 @@ export function buildRadarChart(htmlObjectId, labels, data, name) {
     },
     responsive: [
       {
-        breakpoint: 700,
+        breakpoint: 1030,
+        options: {
+          chart: {
+            height: "90%",
+          },
+          grid: {
+            padding: {
+              bottom: -30
+            }
+          },
+          xaxis: {
+            labels: {
+              style: {
+                fontSize: "12px"
+              }
+            }
+          }
+        }
+      },
+      {
+        breakpoint: 300,
         options: {
           xaxis: {
             labels: {
               style: {
-                fontSize: "14px"
+                fontSize: "10px"
               }
             }
           }

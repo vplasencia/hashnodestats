@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-2">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 px-2">
       <div
         class="chart-wrapper w-full border-2 rounded-lg p-2 md:p-5 shadow-md"
       >
@@ -120,15 +120,29 @@
                   </th>
                 </tr>
               </thead>
-              <tbody class="bg-white divide-y divide-gray-200">
+              <tbody v-if="postsTitle === null && postsReactions === null">
+                <tr>
+                  <td>
+                    <ChartPreloader
+                      v-if="postsTitle === null && postsReactions === null"
+                    />
+                  </td>
+                  <td>
+                    <ChartPreloader
+                      v-if="postsTitle === null && postsReactions === null"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+              <tbody v-else class="bg-white divide-y divide-gray-200">
                 <tr v-for="i in postIndex" :key="i">
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
-                      <div>{{ postsTitle[i-1] }}</div>
+                      <div>{{ postsTitle[i - 1] }}</div>
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <div>{{ postsReactions[i-1] }}</div>
+                    <div>{{ postsReactions[i - 1] }}</div>
                   </td>
                 </tr>
               </tbody>
@@ -186,8 +200,8 @@ export default {
       dateJoined: null,
       userInfo: false,
       featuredPostsCount: 0,
-      postsTitle: [],
-      postsReactions: [],
+      postsTitle: null,
+      postsReactions: null,
       postIndex: 0,
     };
   },
