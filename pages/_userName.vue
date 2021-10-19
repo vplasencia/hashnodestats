@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mx-5 my-10 flex items-center justify-between">
+    <div class="mx-2 md:mx-5 my-10 flex items-center justify-between">
       <NuxtLink to="/" class="btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
