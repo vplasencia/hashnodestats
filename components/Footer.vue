@@ -1,5 +1,5 @@
 <template>
-  <footer class="justify-center items-center py-5 bg-gray-100">
+  <footer class="py-5 bg-gray-100">
     <div>
       <div class="py-3 flex justify-center items-center space-x-5">
         <span>Contacts</span>
@@ -49,28 +49,18 @@
             <polyline points="22,6 12,13 2,6"></polyline></svg
         ></a>
       </div>
-      <div class="px-6">
-        <div
-          class="
-            mt-5
-            border-t-2 border-gray-300
-            flex
-            items-center
-            justify-center
-          "
-        >
-          <div class="text-center py-6">
-            <span class="pt-5 mb-2 flex justify-center items-center space-x-1">
-              <span>Made with</span>
-              <span>❤️</span>
-              <span>by</span>
-              <a
-                class="text-purple-700 hover:text-purple-800"
-                href="https://twitter.com/ViviPlasenciaC"
-                >Vivian Plasencia</a
-              >
-            </span>
-          </div>
+      <div>
+        <div class="text-center py-3">
+          <span class="flex justify-center items-center space-x-1">
+            <span>Made with</span>
+            <span>❤️</span>
+            <span>by</span>
+            <a
+              class="text-purple-700 hover:text-purple-800"
+              href="https://twitter.com/ViviPlasenciaC"
+              >Vivian Plasencia</a
+            >
+          </span>
         </div>
       </div>
     </div>
@@ -81,5 +71,4 @@
 </script>
 
 <style scoped>
-
 </style>
