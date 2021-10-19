@@ -298,7 +298,7 @@ export default {
         {
           hid: "twitter:image",
           name: "twitter:image",
-          content: "https://cdn.hashnode.com/res/hashnode/image/upload/v1630599680062/Qimc1XQGV.jpeg",
+          content: "https://hashnodestats.netlify.app/social-media.png",
         },
         {
           hid: "twitter:image:alt",
@@ -318,12 +318,12 @@ export default {
         {
           hid: "og:image",
           property: "og:image",
-          content: "https://cdn.hashnode.com/res/hashnode/image/upload/v1630599680062/Qimc1XQGV.jpeg",
+          content: "https://hashnodestats.netlify.app/social-media.png",
         },
         {
           hid: "og:image:secure_url",
           property: "og:image:secure_url",
-          content: "https://cdn.hashnode.com/res/hashnode/image/upload/v1630599680062/Qimc1XQGV.jpeg",
+          content: "https://hashnodestats.netlify.app/social-media.png",
         },
         {
           hid: "og:image:alt",
