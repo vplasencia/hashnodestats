@@ -53,7 +53,12 @@
             right-8
             cursor-pointer
           "
-          :href="'https://twitter.com/intent/tweet/?text='+$route.params.userName+'%20Hashnode%20Stats&url=https://hashnodestats.netlify.app/'+$route.params.userName"
+          :href="
+            'https://twitter.com/intent/tweet/?text=' +
+            $route.params.userName +
+            '%20Hashnode%20Stats&url=https://hashnodestats.netlify.app/' +
+            $route.params.userName
+          "
           title="Share Twitter"
           target="_blank"
           rel="noreferrer noopener nofollow"
@@ -91,7 +96,10 @@
             right-12
             cursor-pointer
           "
-          :href="'https://www.linkedin.com/sharing/share-offsite/?url=https://hashnodestats.netlify.app/'+$route.params.userName"
+          :href="
+            'https://www.linkedin.com/sharing/share-offsite/?url=https://hashnodestats.netlify.app/' +
+            $route.params.userName
+          "
           title="Share LinkedIn"
           target="_blank"
           rel="noreferrer noopener nofollow"
@@ -168,8 +176,6 @@ export default {
     },
     copyLinkToClipboard() {
       var linkUrl = window.location.href;
-      console.log("href", linkUrl);
-      //   linkUrl.select();
 
       let inputElem = document.createElement("input");
       inputElem.type = "text";
@@ -178,14 +184,7 @@ export default {
       document.querySelector("body").appendChild(inputElem);
 
       inputElem.select();
-
-      try {
-        var successful = document.execCommand("copy");
-        var msg = successful ? "successful" : "unsuccessful";
-        console.log("Copy command was " + msg);
-      } catch (err) {
-        console.log("Oops, unable to copy");
-      }
+      document.execCommand("copy");
       inputElem.remove();
     },
   },
