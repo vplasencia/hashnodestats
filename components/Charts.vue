@@ -85,7 +85,7 @@
         <div class="chart" v-show="hola1" id="postsPerMonth"></div>
       </div>
     </div>
-    <div class="flex flex-col place-content-center mt-10">
+    <div class="flex flex-col place-content-center my-10">
       <div class="my-2 overflow-x-auto mx-2 lg:mx-8">
         <div class="py-2 align-middle inline-block min-w-full lg:px-8">
           <div
