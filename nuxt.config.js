@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "hashnode-stats",
+    title: "Hashnode Stats",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -132,6 +132,10 @@ export default {
     icon: {
       fileName: "app-icon.png"
     }
+  },
+
+  generate: {
+    fallback: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
