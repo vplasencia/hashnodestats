@@ -18,6 +18,20 @@ export function buildRadarChart(htmlObjectId, labels, data, name) {
         bottom: -50
       }
     },
+    responsive: [
+      {
+        breakpoint: 700,
+        options: {
+          xaxis: {
+            labels: {
+              style: {
+                fontSize: "14px"
+              }
+            }
+          }
+        }
+      }
+    ],
     fill: {
       opacity: 0.3,
       colors: [chartColor]

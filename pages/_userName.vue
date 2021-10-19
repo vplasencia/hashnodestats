@@ -19,7 +19,6 @@
         </svg>
         <span>Go Home</span>
       </NuxtLink>
-      <!-- <div>Share</div> -->
       <div>
         <ShareSocialMedia />
       </div>
@@ -27,11 +26,9 @@
     <div v-if="user">
       <div class="grid place-items-center gap-10">
         <div class="img-profile-wrapper">
-          <div v-if="!user.photo">
-            <ChartPreloader />
-          </div>
+          <ChartPreloader v-if="!user" />
           <img
-            v-else
+            v-if="user.photo"
             data-sizes="auto"
             loading="lazy"
             :src="
@@ -341,7 +338,7 @@ export default {
   @apply flex space-x-1 w-max rounded-lg border-2 border-purple-600 text-purple-600 py-3 px-5 hover:bg-purple-600 transition-colors hover:text-white font-semibold;
 }
 .img-profile-wrapper {
-  @apply w-32 h-32 bg-white border-4 border-white rounded-full shadow-md lg:w-48 lg:h-48;
+  @apply w-32 h-32 bg-gray-100 border-4 border-white rounded-full shadow-md lg:w-48 lg:h-48;
 }
 .img-profile {
   @apply block w-full rounded-full relative;
