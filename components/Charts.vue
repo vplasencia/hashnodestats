@@ -396,15 +396,18 @@ export default {
         let imageWidth = imageProfile.width;
         let imageHeight = imageProfile.height;
 
-        let imageHeightMM = utils.convertFromPXToMM(imageHeight);
-        let imageWidhtMM = utils.convertFromPXToMM(imageWidth);
+        let propierties = doc.getImageProperties(userProfileDataUrl);
+        console.log("propierties", propierties);
 
-        initW = docMidWidth - imageWidhtMM;
+        let imageHeightMM = utils.convertFromPXToMM(propierties.width);
+        let imageWidhtMM = utils.convertFromPXToMM(propierties.height);
 
-        initH += docMidHeight / 2 - imageHeightMM;
+        initW = docMidWidth - (imageWidhtMM / 2);
+
+        initH += 30;
 
         doc.addImage(userProfileDataUrl, "PNG", initW, initH);
-        textPositionH = (initH + imageHeightMM) * 2 - 40;
+        textPositionH = initH + imageHeightMM + 10;
       }
 
       else {
