@@ -50,18 +50,8 @@
             {{ user.name }}
           </div>
           <div>
-            <!-- <a
-              :href="
-                user.publicationDomain
-                  ? user.publicationDomain
-                  : 'https://hashnode.com/@' + user.username
-              "
-              target="_blank"
-              rel="noreferrer noopener nofollow"
-              class="text-purple-600 hover:underline hover:text-purple-700"
-              >@{{ user.username }}</a
-            > -->
             <a
+              id="blog-link"
               :href="
                 user.publicationDomain !== null && user.publicationDomain !== ''
                   ? 'http://' + user.publicationDomain

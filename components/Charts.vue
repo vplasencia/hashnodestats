@@ -400,7 +400,7 @@ export default {
         "@" + this.user.username,
         textPositionW,
         textPositionH + 10,
-        { url: this.user.publicationDomain ? this.user.publicationDomain : "https://hashnode.com/@" + this.user.username }
+        { url: document.getElementById("blog-link").href}
       );
       doc.setTextColor("#374151");
 

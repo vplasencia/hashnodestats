@@ -1,7 +1,7 @@
 <template>
-  <footer class="py-5 bg-gray-100">
+  <footer class="py-5 bg-gray-100 px-2">
     <div>
-      <div class="py-3 flex justify-center items-center space-x-5">
+      <div class="pt-3 pb-5 flex justify-center items-center space-x-5">
         <span>Contacts</span>
         <a
           href="https://twitter.com/ViviPlasenciaC"
@@ -49,7 +49,9 @@
             <polyline points="22,6 12,13 2,6"></polyline></svg
         ></a>
       </div>
-      <div>
+      <div
+        class="pt-5 border-t-2 border-gray-300 flex items-center justify-center"
+      >
         <div class="text-center py-3">
           <span class="flex justify-center items-center space-x-1">
             <span>{{ year }}</span>
