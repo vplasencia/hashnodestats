@@ -86,6 +86,9 @@
       </div>
     </div>
     <div class="flex flex-col place-content-center my-10">
+      <div class="flex place-content-center pb-5">
+        <span class="text-lg font-medium">Top Posts</span>
+      </div>
       <div class="my-2 overflow-x-auto mx-2 lg:mx-8">
         <div class="py-2 align-middle inline-block min-w-full lg:px-8">
           <div
@@ -156,7 +159,7 @@
     </div>
     <div class="flex justify-center items-center py-10 px-2 space-x-3">
       <button class="download-all-charts" @click="saveChartImages()">
-        <svg
+        <!-- <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -171,10 +174,26 @@
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="7 10 12 15 17 10"></polyline>
           <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
+        </svg> -->
         <span>Download Charts</span>
       </button>
       <button class="download-all-charts" @click="generatePdfReport()">
+        <!-- <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-download"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg> -->
         <span>Generate PDF Report</span>
       </button>
     </div>
@@ -352,99 +371,106 @@ export default {
         });
       }
     },
-    async generatePdfReport() {
-      const doc = new jsPDF();
-      doc.setTextColor("#374151");
-      doc.setFont("Rubik");
-      
-      let docWidth = doc.internal.pageSize.getWidth();
-      let docHeight = doc.internal.pageSize.getHeight();
-      let docMidWidth = docWidth / 2;
-      let docMidHeight = docHeight / 2;
+    generatePdfReportPage1(doc, initW, initH, docMidWidth, docMidHeight) {
+      doc.setFontSize(18).setFont(undefined, "bold");
+      console.log("Font size", doc.getFontSize());
+      doc.text(
+        docMidWidth - doc.getTextWidth("Hashnode Report") / 2,
+        initH,
+        "Hashnode Report"
+      );
+      initH += 10;
+      let dateText = dayjs().toString();
+      doc.setFontSize(12).setFont(undefined, "normal");
+      doc.text(docMidWidth - doc.getTextWidth(dateText) / 2, initH, dateText);
 
-      // let userInfoCanvas = await html2canvas(
-      //   document.getElementById("user-info")
-      // );
-      // let userInfoDataUrl = userInfoCanvas.toDataURL("image/png");
-
-      // doc.addImage(userInfoDataUrl, "PNG", docMidWidth, docMidHeight);
-
-      // doc.addPage();
+      doc.setFontSize(16);
 
       let imageProfile = document.getElementById("image-profile");
 
-      let userProfileDataUrl = imageProfile.src;
+      let textPositionH = initH;
 
-      let imageWidth = imageProfile.width;
-      let imageHeight = imageProfile.height;
+      if (imageProfile) {
+        let userProfileDataUrl = imageProfile.src;
 
-      let imageHeightMM = utils.convertFromPXToMM(imageHeight);
-      let imageWidhtMM = utils.convertFromPXToMM(imageWidth);
-      let initW = docMidWidth - imageWidhtMM;
+        let imageWidth = imageProfile.width;
+        let imageHeight = imageProfile.height;
 
-      let initH = docMidHeight / 2 - imageHeightMM;
+        let imageHeightMM = utils.convertFromPXToMM(imageHeight);
+        let imageWidhtMM = utils.convertFromPXToMM(imageWidth);
 
-      doc.text(initW, initH, "Hashnode Report");
-      initH += 10;
-      doc.text(initW, initH, dayjs().toString());
+        initW = docMidWidth - imageWidhtMM;
 
-      initH += 20;
+        initH += docMidHeight / 2 - imageHeightMM;
 
-      doc.addImage(userProfileDataUrl, "PNG", initW, initH);
+        doc.addImage(userProfileDataUrl, "PNG", initW, initH);
+        textPositionH = (initH + imageHeightMM) * 2 - 40;
+      }
 
-      let textPositionH = (initH + imageHeightMM) * 2;
-      let textPositionW = initW;
-      doc.text(textPositionW, textPositionH, this.user.name);
+      else {
+        textPositionH += 20;
+      }
+      doc.text(
+        docMidWidth - doc.getTextWidth(this.user.name) / 2,
+        textPositionH,
+        this.user.name
+      );
       doc.setTextColor("#2563eb");
       doc.textWithLink(
         "@" + this.user.username,
-        textPositionW,
+        docMidWidth - doc.getTextWidth("@" + this.user.username) / 2,
         textPositionH + 10,
-        { url: document.getElementById("blog-link").href}
+        { url: document.getElementById("blog-link").href }
       );
       doc.setTextColor("#374151");
-
-      doc.addPage();
-
+    },
+    generatePdfReportPage2(doc, initW, initH) {
+      let textW = 0;
+      doc.setFont(undefined, "bold");
       doc.text(initW, initH, "Following:");
-      doc.text(
-        initW + 2 + doc.getTextWidth("Following:"),
-        initH,
-        this.user.numFollowing.toString()
-      );
+      textW = doc.getTextWidth("Following:");
+      doc.setFont(undefined, "normal");
+      doc.text(initW + 2 + textW, initH, this.user.numFollowing.toString());
+      doc.setFont(undefined, "bold");
       doc.text(initW, initH + 10, "Followers:");
+      textW = doc.getTextWidth("Followers:");
+      doc.setFont(undefined, "normal");
       doc.text(
-        initW + 2 + doc.getTextWidth("Followers:"),
+        initW + 2 + textW,
         initH + 10,
         this.user.numFollowers.toString()
       );
+      doc.setFont(undefined, "bold");
       doc.text(initW, initH + 20, "Date Joined:");
-      doc.text(
-        initW + 2 + doc.getTextWidth("Date Joined:"),
-        initH + 20,
-        this.dateJoined.toString()
-      );
+      textW = doc.getTextWidth("Date Joined:");
+      doc.setFont(undefined, "normal");
+      doc.text(initW + 2 + textW, initH + 20, this.dateJoined.toString());
 
+      doc.setFont(undefined, "bold");
       doc.text(initW, initH + 40, "Posts:");
-      doc.text(
-        initW + 2 + doc.getTextWidth("Posts:"),
-        initH + 40,
-        this.posts.length.toString()
-      );
+      textW = doc.getTextWidth("Posts:");
+      doc.setFont(undefined, "normal");
+      doc.text(initW + 2 + textW, initH + 40, this.posts.length.toString());
+      doc.setFont(undefined, "bold");
       doc.text(initW, initH + 50, "Reactions:");
+      textW = doc.getTextWidth("Reactions:");
+      doc.setFont(undefined, "normal");
       doc.text(
-        initW + 2 + doc.getTextWidth("Reactions:"),
+        initW + 2 + textW,
         initH + 50,
         this.user.numReactions ? this.user.numReactions.toString() : "0"
       );
+      doc.setFont(undefined, "bold");
       doc.text(initW, initH + 60, "Featured Posts:");
+      textW = doc.getTextWidth("Featured Posts:");
+      doc.setFont(undefined, "normal");
       doc.text(
-        initW + 2 + doc.getTextWidth("Featured Posts:"),
+        initW + 2 + textW,
         initH + 60,
         this.featuredPostsCount.toString()
       );
-      doc.addPage();
-
+    },
+    async generatePdfReportPageCharts(doc, docMidWidth, docMidHeight) {
       for (let i = 0; i < this.chartsInstances.length; i++) {
         let { imgURI, blob } = await this.chartsInstances[i].instance.dataURI();
 
@@ -468,8 +494,65 @@ export default {
 
         doc.addPage();
       }
+    },
+    generatePdfReportPostsPage(doc, initH, docMidWidth) {
+      doc.setFontSize(18).setFont(undefined, "bold");
+      doc.text(
+        docMidWidth - doc.getTextWidth("Top Posts") / 2,
+        initH,
+        "Top Posts"
+      );
+      doc.setFontSize(16).setFont(undefined, "normal");
+      if (this.posts.length !== 0) {
+        doc.autoTable({ startY: initH + 20, html: "#posts-reactions-table" });
+      } else {
+        doc.text(
+          docMidWidth - doc.getTextWidth("There are no published posts") / 2,
+          initH + 20,
+          "There are no published posts"
+        );
+      }
+    },
+    async generatePdfReport() {
+      const doc = new jsPDF();
+      doc.setTextColor("#374151");
 
-      doc.autoTable({ html: "#posts-reactions-table" });
+      let docWidth = doc.internal.pageSize.getWidth();
+      let docHeight = doc.internal.pageSize.getHeight();
+      let docMidWidth = docWidth / 2;
+      let docMidHeight = docHeight / 2;
+
+      this.generatePdfReportPage1(doc, 30, 30, docMidWidth, docMidHeight);
+
+      doc.addPage();
+
+      this.generatePdfReportPage2(doc, 30, 30);
+
+      doc.addPage();
+
+      await this.generatePdfReportPageCharts(doc, docMidWidth, docMidHeight);
+
+      this.generatePdfReportPostsPage(doc, 30, docMidWidth);
+
+      const addFooters = (doc) => {
+        const pageCount = doc.internal.getNumberOfPages();
+
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        for (var i = 1; i <= pageCount; i++) {
+          doc.setPage(i);
+          doc.text(
+            "Page " + String(i) + " of " + String(pageCount),
+            doc.internal.pageSize.width / 2,
+            287,
+            {
+              align: "center",
+            }
+          );
+        }
+      };
+
+      addFooters(doc);
 
       let docName = this.user.username + " - " + "Report.pdf";
       doc.save(docName);
