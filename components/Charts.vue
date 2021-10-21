@@ -402,15 +402,13 @@ export default {
         let imageHeightMM = utils.convertFromPXToMM(propierties.width);
         let imageWidhtMM = utils.convertFromPXToMM(propierties.height);
 
-        initW = docMidWidth - (imageWidhtMM / 2);
+        initW = docMidWidth - imageWidhtMM / 2;
 
         initH += 30;
 
         doc.addImage(userProfileDataUrl, "PNG", initW, initH);
-        textPositionH = initH + imageHeightMM + 10;
-      }
-
-      else {
+        textPositionH = initH + imageHeightMM + 20;
+      } else {
         textPositionH += 20;
       }
       doc.text(
@@ -516,6 +514,29 @@ export default {
         );
       }
     },
+    addElementsFooter(doc) {
+      const pageCount = doc.internal.getNumberOfPages();
+
+      let textW = 0;
+
+      doc.setFont("helvetica", "italic");
+      doc.setFontSize(8);
+      for (var i = 1; i <= pageCount; i++) {
+        doc.setPage(i);
+        textW = doc.getTextWidth("Page " + String(i) + " of " + String(pageCount));
+        doc.text(
+          "Page " + String(i) + " of " + String(pageCount),
+          (doc.internal.pageSize.width / 2) - (textW / 2),
+          287
+        );
+        textW = doc.getTextWidth("Hashnode Stats");
+        doc.text(
+          "Hashnode Stats",
+          doc.internal.pageSize.width - textW - 10,
+          287
+        );
+      }
+    },
     async generatePdfReport() {
       const doc = new jsPDF();
       doc.setTextColor("#374151");
@@ -537,25 +558,7 @@ export default {
 
       this.generatePdfReportPostsPage(doc, 30, docMidWidth);
 
-      const addFooters = (doc) => {
-        const pageCount = doc.internal.getNumberOfPages();
-
-        doc.setFont("helvetica", "italic");
-        doc.setFontSize(8);
-        for (var i = 1; i <= pageCount; i++) {
-          doc.setPage(i);
-          doc.text(
-            "Page " + String(i) + " of " + String(pageCount),
-            doc.internal.pageSize.width / 2,
-            287,
-            {
-              align: "center",
-            }
-          );
-        }
-      };
-
-      addFooters(doc);
+      this.addElementsFooter(doc);
 
       let docName = this.user.username + " - " + "Report.pdf";
       doc.save(docName);
