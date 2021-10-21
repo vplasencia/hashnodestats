@@ -292,19 +292,19 @@ export default {
     this.dateJoined = dayjs(this.user.dateJoined);
     this.userInfo = true;
 
-    console.log("user.dateJoined", new Date(this.user.dateJoined).getDay());
+    // console.log("user.dateJoined", new Date(this.user.dateJoined).getDay());
     this.posts = await chartFunctions.getAllPosts(this.userName);
-    console.log(this.posts);
+    // console.log(this.posts);
     this.solveCharts();
     utils.sortArrays(this.postsTitle, this.postsReactions);
-    console.log("posts", this.postsTitle.length);
+    // console.log("posts", this.postsTitle.length);
     if (this.postsTitle.length > 4) {
       this.postIndex = 5;
     } else {
       this.postIndex = this.postsTitle.length;
     }
-    console.log(this.postsTitle);
-    console.log(this.postsReactions);
+    // console.log(this.postsTitle);
+    // console.log(this.postsReactions);
   },
   methods: {
     solveCharts() {
@@ -324,7 +324,7 @@ export default {
           this.featuredPostsCount += 1;
         }
       }
-      console.log(weekDayPosts);
+      // console.log(weekDayPosts);
       this.hola = true;
       let chartPostsPerWeekDay = buildCharts.buildRadarChart(
         "postsPerWeekDay",
@@ -373,7 +373,7 @@ export default {
     },
     generatePdfReportPage1(doc, initW, initH, docMidWidth, docMidHeight) {
       doc.setFontSize(18).setFont(undefined, "bold");
-      console.log("Font size", doc.getFontSize());
+      // console.log("Font size", doc.getFontSize());
       doc.text(
         docMidWidth - doc.getTextWidth("Hashnode Report") / 2,
         initH,
@@ -397,7 +397,7 @@ export default {
         let imageHeight = imageProfile.height;
 
         let propierties = doc.getImageProperties(userProfileDataUrl);
-        console.log("propierties", propierties);
+        // console.log("propierties", propierties);
 
         let imageHeightMM = utils.convertFromPXToMM(propierties.width);
         let imageWidhtMM = utils.convertFromPXToMM(propierties.height);
