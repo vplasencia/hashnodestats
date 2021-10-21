@@ -94,3 +94,13 @@ export function sortArrays(postsTitle, reactionsCount) {
     reactionsCount[k] = list[k].reactionsCount;
   }
 }
+
+export function convertFromPXToMM(value) {
+  // 1 mm = 3.779528 px
+  return value / 3.779528;
+}
+
+export function convertFromMMToPX(value) {
+  // 1 mm = 3.779528 px
+  return value * 3.779528;
+}

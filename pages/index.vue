@@ -76,7 +76,9 @@
     </div> -->
     <!-- <Charts v-if="analyze" :userName="userName" /> -->
 
-    <ContactForm />
+    <div class="px-2">
+      <ContactForm />
+    </div>
   </div>
 </template>
 

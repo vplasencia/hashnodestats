@@ -24,10 +24,11 @@
       </div>
     </div>
     <div v-if="user">
-      <div class="grid place-items-center gap-10">
+      <div id="user-profile" class="grid place-items-center gap-10">
         <div class="img-profile-wrapper">
           <ChartPreloader v-if="!user" />
           <img
+            id="image-profile"
             v-if="user.photo"
             data-sizes="auto"
             loading="lazy"
@@ -48,7 +49,32 @@
           <div class="font-semibold text-lg">
             {{ user.name }}
           </div>
-          <div>@{{ user.username }}</div>
+          <div>
+            <!-- <a
+              :href="
+                user.publicationDomain
+                  ? user.publicationDomain
+                  : 'https://hashnode.com/@' + user.username
+              "
+              target="_blank"
+              rel="noreferrer noopener nofollow"
+              class="text-purple-600 hover:underline hover:text-purple-700"
+              >@{{ user.username }}</a
+            > -->
+            <a
+              :href="
+                user.publicationDomain !== null && user.publicationDomain !== ''
+                  ? 'http://' + user.publicationDomain
+                  : user.publicationDomain === null
+                  ? 'https://hashnode.com/@' + user.username
+                  : 'https://' + user.username + '.hashnode.dev/'
+              "
+              target="_blank"
+              rel="noreferrer noopener nofollow"
+              class="text-purple-600 hover:underline hover:text-purple-700"
+              >@{{ user.username }}</a
+            >
+          </div>
         </div>
 
         <div
@@ -259,6 +285,7 @@ export default {
       query: gql`
         query userInfo($userName: String!) {
           user(username: $userName) {
+            publicationDomain
             numFollowing
             numFollowers
             photo
@@ -328,7 +355,7 @@ export default {
         {
           hid: "og:image:alt",
           property: "og:image:alt",
-          content: "Hashnode Stats"
+          content: "Hashnode Stats",
         },
       ],
     };

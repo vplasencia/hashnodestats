@@ -137,5 +137,9 @@ export function buildRadarChart(htmlObjectId, labels, data, name) {
   var chart = new ApexCharts(
     document.getElementById(htmlObjectId),
     options
-  ).render();
+  );
+
+  chart.render();
+
+  return {"name": name, "instance": chart, "id": htmlObjectId};
 }
