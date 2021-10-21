@@ -52,6 +52,8 @@
       <div>
         <div class="text-center py-3">
           <span class="flex justify-center items-center space-x-1">
+            <span>{{ year }}</span>
+            <span>&bull;</span>
             <span>Made with</span>
             <span>❤️</span>
             <span>by</span>
@@ -68,6 +70,17 @@
 </template>
 
 <script>
+let dayjs = require("dayjs");
+export default {
+  data() {
+    return {
+      year: null,
+    };
+  },
+  mounted() {
+    this.year = dayjs().year();
+  },
+};
 </script>
 
 <style scoped>
