@@ -110,7 +110,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
-    "@nuxtjs/apollo"
+    "@nuxtjs/apollo",
+    '@nuxtjs/robots'
   ],
   apollo: {
     clientConfigs: {
