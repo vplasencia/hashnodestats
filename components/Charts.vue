@@ -347,7 +347,7 @@ export default {
         var dataURL = canvas.toDataURL("image/png");
         let a = document.createElement("a");
         a.href = dataURL;
-        a.download = this.imageName + ".png";
+        a.download = this.user.username + " - " + "User Info.png";
         a.click();
         a.remove();
       });
@@ -355,7 +355,7 @@ export default {
         var dataURL = canvas.toDataURL("image/png");
         let a = document.createElement("a");
         a.href = dataURL;
-        a.download = this.imageName + ".png";
+        a.download = this.user.username + " - " + "Posts Info.png";
         a.click();
         a.remove();
       });
