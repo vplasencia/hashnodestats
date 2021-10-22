@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
+
 export default {
   data() {
     return {
@@ -90,10 +92,25 @@ export default {
     };
   },
   methods: {
-    analyzeUser() {
+    async analyzeUser() {
       let userName = document.getElementById("userName").value;
       this.userName = userName;
-      this.$router.push(userName);
+
+      let query = gql`
+        query userInfo($userName: String!) {
+          user(username: $userName) {
+            username
+          }
+        }
+      `;
+      let variables = { userName: userName };
+      let response = await this.$apollo.query({ query, variables });
+
+      console.log("user", response);
+
+      if (response.data.user.username !== null) {
+        this.$router.push(userName);
+      }
     },
   },
 };

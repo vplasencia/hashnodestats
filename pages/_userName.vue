@@ -19,11 +19,14 @@
         </svg>
         <span>Go Home</span>
       </NuxtLink>
-      <div>
+      <div v-if="user.username">
         <ShareSocialMedia />
       </div>
     </div>
-    <div v-if="user">
+    <div v-if="!user.username" class="flex justify-center items-center">
+      <span>Wrong Hashnode Username</span>
+    </div>
+    <div v-if="user.username">
       <div id="user-profile" class="grid place-items-center gap-10">
         <div class="img-profile-wrapper">
           <ChartPreloader v-if="!user" />
