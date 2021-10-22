@@ -35,6 +35,8 @@
             v-if="user.photo"
             data-sizes="auto"
             loading="lazy"
+            width="184"
+            height="184"
             :src="
               user.photo +
               '?w=400&amp;h=400&amp;fit=crop&amp;crop=faces&amp;auto=compress'
@@ -43,7 +45,7 @@
               user.photo +
               '?w=400&amp;h=400&amp;fit=crop&amp;crop=faces&amp;auto=compress'
             "
-            :alt="user.name + 'photo'"
+            :alt="user.name + ' photo'"
             class="img-profile"
           />
         </div>

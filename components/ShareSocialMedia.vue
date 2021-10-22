@@ -3,6 +3,7 @@
     <div class="relative container flex justify-center items-center">
       <button
         id="share"
+        aria-label="share"
         class="
           cursor-pointer
           h-14
