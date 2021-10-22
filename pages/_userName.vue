@@ -29,7 +29,6 @@
     <div v-if="user && user.username">
       <div id="user-profile" class="grid place-items-center gap-10">
         <div class="img-profile-wrapper">
-          <ChartPreloader v-if="!user" />
           <img
             id="image-profile"
             v-if="user.photo"
