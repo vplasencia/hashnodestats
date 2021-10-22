@@ -1,21 +1,28 @@
 <template>
   <div>
-    <div class="my-5 flex place-content-center">
-      <NuxtLink
-        to="/vivianplasencia"
-        class="
-          rounded-lg
-          border-2 border-purple-600
-          text-purple-600
-          py-3
-          px-5
-          hover:bg-purple-600
-          transition-colors
-          hover:text-white
-          font-semibold
-        "
-        >Demo</NuxtLink
-      >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-10 px-2">
+      <div class="flex items-center justify-center">
+        <span class="text-purple-600 font-medium text-3xl"
+          >See your Hashnode Stats</span
+        >
+      </div>
+      <div class="my-5 flex items-center justify-center">
+        <NuxtLink
+          to="/vivianplasencia"
+          class="
+            rounded-lg
+            border-2 border-purple-600
+            text-purple-600
+            py-3
+            px-5
+            hover:bg-purple-600
+            transition-colors
+            hover:text-white
+            font-semibold
+          "
+          >Demo</NuxtLink
+        >
+      </div>
     </div>
     <form
       class="px-2 grid grid-cols-1 place-items-center my-5"
@@ -36,21 +43,27 @@
             h-12
             px-3
             w-full
-            border-purple-400 border-2
+            border-2
             rounded-lg
             focus:outline-none
-            focus:border-purple-600
+            input-default
           "
         />
+        <div id="error-message" class="error-text opacity-0">
+          Invalid Hashnode Username (put the Username without @)
+        </div>
         <div class="flex justify-center">
           <button
             type="submit"
+            id="user-btn"
             class="
+              flex
               justify-center
-              mt-5
+              items-center
+              mt-2
               rounded-lg
               border-2 border-purple-600
-              py-3
+              py-4
               px-5
               bg-purple-600
               transition-colors
@@ -59,7 +72,10 @@
               hover:bg-purple-700
             "
           >
-            Analyze User
+            <div v-show="checkingUser" class="mr-3">
+              <BtnLoader />
+            </div>
+            <span>Analyze User</span>
           </button>
         </div>
       </div>
@@ -76,8 +92,86 @@
     </div> -->
     <!-- <Charts v-if="analyze" :userName="userName" /> -->
 
-    <div class="px-2">
-      <ContactForm />
+    <div class="flex justify-center items-center my-10 px-2">
+      <ul
+        class="
+          list-disc
+          rounded-lg
+          bg-gray-100
+          py-5
+          px-7
+          md:px-20
+          space-y-5
+          shadow
+          w-full
+          md:w-6/12
+        "
+      >
+        <span
+          class="
+            flex
+            justify-center
+            items-center
+            text-3xl text-purple-600
+            font-medium
+            mb-3
+          "
+          >FAQs</span
+        >
+        <div>
+          <li class="title-faqs">What is Hashnode?</li>
+          <div>A free blogging platform built for developers by developers. Blog on personal domain, share ideas, and connect with the global dev community!</div>
+        </div>
+        <div>
+          <li class="title-faqs">How is the data obtained?</li>
+          <div>
+            <span
+              >The data is obtained from the public
+              <a
+                href="https://api.hashnode.com/"
+                target="_blank"
+                rel="noreferrer noopener nofollow"
+                class="text-purple-700 hover:underline hover:text-purple-800"
+                >Hashnode api</a
+              >.</span
+            >
+          </div>
+        </div>
+      </ul>
+    </div>
+
+    <div class="px-2 my-10">
+      <div>
+        <div
+          class="
+            flex
+            justify-center
+            items-center
+            text-3xl text-purple-600
+            font-medium
+            mb-3
+          "
+        >
+          <span>Contact</span>
+        </div>
+        <div class="flex justify-center items-center mt-5">
+          Contact me if you have any questions, concerns, suggestions or want to
+          add new statistics.
+        </div>
+        <ContactForm />
+        <div class="text-center">
+          <span
+            >Or send me an email to
+            <a
+              href="mailto:hello@vivianplasencia.com"
+              target="_blank"
+              rel="noreferrer noopener nofollow"
+              class="text-purple-700 hover:text-purple-800 hover:underline"
+              >hello@vivianplasencia.com</a
+            ></span
+          >
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -89,12 +183,28 @@ export default {
   data() {
     return {
       userName: null,
+      checkingUser: false,
     };
+  },
+  mounted() {
+    this.checkingUser = false;
+    let inputUsername = document.getElementById("userName");
+    inputUsername.addEventListener("focus", (e) => {
+      if (inputUsername.classList.contains("input-error")) {
+        inputUsername.classList.remove("input-error");
+        inputUsername.classList.add("input-default");
+        document.getElementById("error-message").classList.add("opacity-0");
+      }
+    });
   },
   methods: {
     async analyzeUser() {
       let userName = document.getElementById("userName").value;
       this.userName = userName;
+      if (userName === "" || userName === undefined) return;
+      this.checkingUser = true;
+      document.getElementById("user-btn").disabled = true;
+      document.getElementById("user-btn").classList.add("cursor-not-allowed");
 
       let query = gql`
         query userInfo($userName: String!) {
@@ -106,10 +216,24 @@ export default {
       let variables = { userName: userName };
       let response = await this.$apollo.query({ query, variables });
 
-      console.log("user", response);
+      // console.log("user", response.data.user.username);
 
       if (response.data.user.username !== null) {
+        this.checkingUser = false;
+        document.getElementById("user-btn").disabled = false;
+        document
+          .getElementById("user-btn")
+          .classList.remove("cursor-not-allowed");
         this.$router.push(userName);
+      } else {
+        document.getElementById("error-message").classList.remove("opacity-0");
+        document.getElementById("userName").classList.remove("input-default");
+        document.getElementById("userName").classList.add("input-error");
+        this.checkingUser = false;
+        document.getElementById("user-btn").disabled = false;
+        document
+          .getElementById("user-btn")
+          .classList.remove("cursor-not-allowed");
       }
     },
   },
@@ -123,5 +247,21 @@ export default {
 
 .chart-wrapper {
   height: 30em;
+}
+
+.error-text {
+  @apply text-red-500 text-sm mt-1;
+}
+
+.input-default {
+  @apply border-purple-400 focus:border-purple-600;
+}
+
+.input-error {
+  @apply border-red-500;
+}
+
+.title-faqs {
+  @apply font-medium text-lg mb-1;
 }
 </style>

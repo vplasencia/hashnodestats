@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center my-10 py-5">
+  <div class="flex items-center justify-center my-5 py-5">
     <form action="" class="space-y-5" @submit.prevent="sendEmail()" novalidate>
       <div class="space-y-2">
         <label for="name">Name</label>
