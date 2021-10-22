@@ -93,13 +93,13 @@
     <!-- <Charts v-if="analyze" :userName="userName" /> -->
 
     <div class="flex justify-center items-center my-10 px-2">
-      <ul
+      <div
         class="
           list-disc
           rounded-lg
           bg-gray-100
           py-5
-          px-7
+          px-5
           md:px-20
           space-y-5
           shadow
@@ -119,11 +119,15 @@
           >FAQs</span
         >
         <div>
-          <li class="title-faqs">What is Hashnode?</li>
-          <div>A free blogging platform built for developers by developers. Blog on personal domain, share ideas, and connect with the global dev community!</div>
+          <div class="title-faqs">&bull; What is Hashnode?</div>
+          <div>
+            A free blogging platform built for developers by developers. Blog on
+            personal domain, share ideas, and connect with the global dev
+            community!
+          </div>
         </div>
         <div>
-          <li class="title-faqs">How is the data obtained?</li>
+          <div class="title-faqs">&bull; How is the data obtained?</div>
           <div>
             <span
               >The data is obtained from the public
@@ -137,7 +141,7 @@
             >
           </div>
         </div>
-      </ul>
+      </div>
     </div>
 
     <div class="px-2 my-10">
