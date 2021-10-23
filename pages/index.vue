@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-10 px-2">
       <div class="flex items-center justify-center">
         <span class="text-purple-600 font-medium text-3xl"
-          >Analyze and share your Hashnode Stats</span
+          >Analyze your Hashnode Stats</span
         >
       </div>
       <div class="my-5 flex items-center justify-center">
