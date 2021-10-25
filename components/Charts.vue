@@ -268,20 +268,20 @@ export default {
     // }, 2000);
 
     Apex.chart = {
-      // toolbar: {
-      //   tools: {
-      //     download: true,
-      //     selection: false,
-      //     zoom: false,
-      //     zoomin: false,
-      //     zoomout: false,
-      //     pan: false,
-      //     reset: false,
-      //   },
-      // },
       toolbar: {
-        show: false,
+        tools: {
+          download: true,
+          selection: false,
+          zoom: false,
+          zoomin: false,
+          zoomout: false,
+          pan: false,
+          reset: false,
+        },
       },
+      // toolbar: {
+      //   show: false,
+      // },
       fontFamily: "Rubik, sans-serif",
     };
 
@@ -327,6 +327,7 @@ export default {
       // console.log(weekDayPosts);
       this.hola = true;
       let chartPostsPerWeekDay = buildCharts.buildRadarChart(
+        this.user.username,
         "postsPerWeekDay",
         utils.WEEK_DAYS,
         weekDayPosts,
@@ -334,6 +335,7 @@ export default {
       );
       this.hola1 = true;
       let chartPostsPerMonth = buildCharts.buildRadarChart(
+        this.user.username,
         "postsPerMonth",
         utils.MONTHS,
         monthsPosts,

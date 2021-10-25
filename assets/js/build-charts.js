@@ -1,6 +1,6 @@
 let chartColor = "#3B82F6";
 
-export function buildRadarChart(htmlObjectId, labels, data, name) {
+export function buildRadarChart(username, htmlObjectId, labels, data, name) {
   var options = {
     series: [
       {
@@ -11,7 +11,20 @@ export function buildRadarChart(htmlObjectId, labels, data, name) {
     chart: {
       height: "100%",
       with: "100%",
-      type: "radar"
+      type: "radar",
+      toolbar: {
+        export: {
+          csv: {
+            filename: username + " - " + name
+          },
+          svg: {
+            filename: username + " - " + name
+          },
+          png: {
+            filename: username + " - " + name
+          }
+        }
+      }
     },
     grid: {
       padding: {
@@ -23,7 +36,7 @@ export function buildRadarChart(htmlObjectId, labels, data, name) {
         breakpoint: 1030,
         options: {
           chart: {
-            height: "90%",
+            height: "90%"
           },
           grid: {
             padding: {
@@ -134,12 +147,9 @@ export function buildRadarChart(htmlObjectId, labels, data, name) {
     }
   };
 
-  var chart = new ApexCharts(
-    document.getElementById(htmlObjectId),
-    options
-  );
+  var chart = new ApexCharts(document.getElementById(htmlObjectId), options);
 
   chart.render();
 
-  return {"name": name, "instance": chart, "id": htmlObjectId};
+  return { name: name, instance: chart, id: htmlObjectId };
 }
