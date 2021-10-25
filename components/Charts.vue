@@ -537,14 +537,8 @@ export default {
       doc.setFontSize(8);
       for (var i = 1; i <= pageCount; i++) {
         doc.setPage(i);
-        textW = doc.getTextWidth(
-          "Page " + String(i) + " of " + String(pageCount)
-        );
-        doc.text(
-          "Page " + String(i) + " of " + String(pageCount),
-          doc.internal.pageSize.width / 2 - textW / 2,
-          287
-        );
+        textW = doc.getTextWidth(String(i));
+        doc.text(String(i), doc.internal.pageSize.width / 2 - textW / 2, 287);
         textW = doc.getTextWidth("Hashnode Stats");
         doc.text(
           "Hashnode Stats",
