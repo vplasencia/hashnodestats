@@ -292,6 +292,12 @@ export default {
     this.dateJoined = dayjs(this.user.dateJoined);
     this.userInfo = true;
 
+    if (this.user.publicationDomain === null) {
+      this.posts = [];
+      this.solveCharts();
+      return;
+    }
+
     // console.log("user.dateJoined", new Date(this.user.dateJoined).getDay());
     this.posts = await chartFunctions.getAllPosts(this.userName);
     // console.log(this.posts);
@@ -525,10 +531,12 @@ export default {
       doc.setFontSize(8);
       for (var i = 1; i <= pageCount; i++) {
         doc.setPage(i);
-        textW = doc.getTextWidth("Page " + String(i) + " of " + String(pageCount));
+        textW = doc.getTextWidth(
+          "Page " + String(i) + " of " + String(pageCount)
+        );
         doc.text(
           "Page " + String(i) + " of " + String(pageCount),
-          (doc.internal.pageSize.width / 2) - (textW / 2),
+          doc.internal.pageSize.width / 2 - textW / 2,
           287
         );
         textW = doc.getTextWidth("Hashnode Stats");
