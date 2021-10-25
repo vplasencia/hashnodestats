@@ -294,14 +294,16 @@ export default {
 
     if (this.user.publicationDomain === null) {
       this.posts = [];
-      this.solveCharts();
+      this.solveCharts([]);
       return;
     }
 
     // console.log("user.dateJoined", new Date(this.user.dateJoined).getDay());
-    this.posts = await chartFunctions.getAllPosts(this.userName);
+    let posts = await chartFunctions.getAllPosts(this.userName);
+    // console.log(posts);
     // console.log(this.posts);
-    this.solveCharts();
+    this.solveCharts(posts);
+    // console.log(this.posts);
     utils.sortArrays(this.postsTitle, this.postsReactions);
     // console.log("posts", this.postsTitle.length);
     if (this.postsTitle.length > 4) {
@@ -313,21 +315,25 @@ export default {
     // console.log(this.postsReactions);
   },
   methods: {
-    solveCharts() {
+    solveCharts(posts) {
+      this.posts = [];
       this.postsTitle = [];
       this.postsReactions = [];
       let weekDayPosts = [0, 0, 0, 0, 0, 0, 0];
       let monthsPosts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      for (let i = 0; i < this.posts.length; i++) {
-        this.postsTitle.push(this.posts[i].title);
-        this.postsReactions.push(this.posts[i].totalReactions);
-        let date = new Date(this.posts[i].dateAdded);
-        let weekDay = date.getDay();
-        let month = date.getMonth();
-        weekDayPosts[weekDay] += 1;
-        monthsPosts[month] += 1;
-        if (this.posts[i].dateFeatured !== null) {
-          this.featuredPostsCount += 1;
+      for (let i = 0; i < posts.length; i++) {
+        if (posts[i].author.username === this.user.username) {
+          this.posts.push(posts[i]);
+          this.postsTitle.push(posts[i].title);
+          this.postsReactions.push(posts[i].totalReactions);
+          let date = new Date(posts[i].dateAdded);
+          let weekDay = date.getDay();
+          let month = date.getMonth();
+          weekDayPosts[weekDay] += 1;
+          monthsPosts[month] += 1;
+          if (posts[i].dateFeatured !== null) {
+            this.featuredPostsCount += 1;
+          }
         }
       }
       // console.log(weekDayPosts);
