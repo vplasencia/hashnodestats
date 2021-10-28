@@ -292,7 +292,7 @@ export default {
     this.dateJoined = dayjs(this.user.dateJoined);
     this.userInfo = true;
 
-    if (this.user.publicationDomain === null) {
+    if (this.user.publicationDomain === null && this.user.username.toLowerCase() !== "hashnode") {
       this.posts = [];
       this.solveCharts();
       return;
