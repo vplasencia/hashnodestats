@@ -48,6 +48,7 @@
             focus:outline-none
             input-default
           "
+          autofocus
         />
         <div id="error-message" class="error-text opacity-0">
           Invalid Hashnode Username (put the Username without @)
