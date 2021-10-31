@@ -534,11 +534,17 @@ export default {
         textW = doc.getTextWidth(String(i));
         doc.text(String(i), doc.internal.pageSize.width / 2 - textW / 2, 287);
         textW = doc.getTextWidth("Hashnode Stats");
-        doc.text(
-          "Hashnode Stats",
-          doc.internal.pageSize.width - textW - 10,
-          287
-        );
+        // doc.text(
+        //   "Hashnode Stats",
+        //   doc.internal.pageSize.width - textW - 10,
+        //   287
+        // );
+        doc.textWithLink(
+        "Hashnode Stats",
+        doc.internal.pageSize.width - textW - 10,
+        287,
+        { url: "https://hashnodestats.netlify.app/" }
+      );
       }
     },
     async generatePdfReport() {
