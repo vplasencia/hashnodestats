@@ -20,7 +20,7 @@
             hover:text-white
             font-semibold
           "
-          >Demo</NuxtLink
+          >See Demo</NuxtLink
         >
       </div>
     </div>

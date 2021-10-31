@@ -3,9 +3,9 @@
     <div>
       <NuxtLink to="/">
         <div class="logo">
-          <div>Hashnode</div>
-          <div>Stats</div>
-          <!-- <p>Hashnode Stats</p> -->
+          <!-- <div>Hashnode</div>
+          <div>Stats</div> -->
+          <p>Hashnode Stats</p>
         </div>
       </NuxtLink>
     </div>
