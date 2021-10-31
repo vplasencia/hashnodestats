@@ -38,5 +38,3 @@ export async function getAllPosts(userName) {
   }
   return totalPosts;
 }
-
-function numberOfPostsPerWeekDay(htmlObjectId, posts) {}

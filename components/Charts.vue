@@ -337,7 +337,7 @@ export default {
         "postsPerWeekDay",
         utils.WEEK_DAYS,
         weekDayPosts,
-        "Posts Per WeekDay"
+        "Posts Per Day of the Week"
       );
       this.hola1 = true;
       let chartPostsPerMonth = buildCharts.buildRadarChart(
