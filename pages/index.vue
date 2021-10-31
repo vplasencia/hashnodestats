@@ -122,7 +122,7 @@
         <div>
           <div class="title-faqs">&bull; What is Hashnode?</div>
           <div>
-            A free blogging platform built for developers by developers. Blog on
+            Hashnode is a free blogging platform built for developers by developers. Blog on
             personal domain, share ideas, and connect with the global dev
             community!
           </div>
