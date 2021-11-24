@@ -81,10 +81,6 @@ export default {
       let email = document.getElementById("email").value;
       let message = document.getElementById("message").value;
 
-      console.log(name,email,message);
-
-      console.log(process.env.EMAIL)
-
       email = email.toLowerCase();
 
       Email.send({
