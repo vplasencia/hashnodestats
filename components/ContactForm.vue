@@ -1,6 +1,11 @@
 <template>
   <div class="flex items-center justify-center my-5 py-5">
-    <form id="contact-form" class="space-y-5" @submit.prevent="sendEmail()" novalidate>
+    <form
+      id="contact-form"
+      class="space-y-5"
+      @submit.prevent="sendEmail()"
+      novalidate
+    >
       <div class="space-y-2">
         <label for="name">Name</label>
         <input
@@ -11,11 +16,15 @@
             h-12
             px-3
             w-full
-            border-purple-400 border-2
+            border-2
             rounded-lg
-            focus:outline-none focus:border-purple-600
+            focus:outline-none
+            input-default
           "
         />
+        <div id="name-error-message" class="error-text hidden">
+          Please enter your name!
+        </div>
       </div>
       <div class="space-y-2">
         <label for="email">Email</label>
@@ -27,11 +36,15 @@
             h-12
             px-3
             w-full
-            border-purple-400 border-2
+            border-2
             rounded-lg
-            focus:outline-none focus:border-purple-600
+            focus:outline-none
+            input-default
           "
         />
+        <div id="email-error-message" class="error-text hidden">
+          Please enter your email!
+        </div>
       </div>
       <div class="space-y-2">
         <label for="message">Message</label>
@@ -43,14 +56,21 @@
             h-40
             p-3
             w-full
-            border-purple-400 border-2
+            border-2
             rounded-lg
-            focus:outline-none focus:border-purple-600
+            focus:outline-none
+            input-default
           "
         ></textarea>
+        <div id="message-error-message" class="error-text hidden">
+          Please enter your message!
+        </div>
       </div>
       <div class="space-y-2 flex items-center justify-center">
-        <button type="submit" class="send-btn">
+        <button id="send-btn" type="submit" class="send-btn">
+          <div v-show="sendingEmail" class="mr-3">
+            <BtnLoader />
+          </div>
           <span>Send</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -75,13 +95,77 @@
 
 <script>
 export default {
+  data() {
+    return {
+      sendingEmail: false,
+    };
+  },
+  mounted() {
+    this.sendingEmail = false;
+    let name = document.getElementById("name");
+    name.addEventListener("focus", (e) => {
+      if (name.classList.contains("input-error")) {
+        name.classList.remove("input-error");
+        name.classList.add("input-default");
+        document.getElementById("name-error-message").classList.add("hidden");
+      }
+    });
+    let email = document.getElementById("email");
+    email.addEventListener("focus", (e) => {
+      if (email.classList.contains("input-error")) {
+        email.classList.remove("input-error");
+        email.classList.add("input-default");
+        document.getElementById("email-error-message").classList.add("hidden");
+      }
+    });
+    let message = document.getElementById("message");
+    message.addEventListener("focus", (e) => {
+      if (message.classList.contains("input-error")) {
+        message.classList.remove("input-error");
+        message.classList.add("input-default");
+        document
+          .getElementById("message-error-message")
+          .classList.add("hidden");
+      }
+    });
+  },
   methods: {
     sendEmail() {
       let name = document.getElementById("name").value;
       let email = document.getElementById("email").value;
       let message = document.getElementById("message").value;
 
-      if (name === "" || email === "" || message === "") return;
+      if (name === "") {
+        document
+          .getElementById("name-error-message")
+          .classList.remove("hidden");
+        document.getElementById("name").classList.remove("input-default");
+        document.getElementById("name").classList.add("input-error");
+      }
+
+      if (email === "") {
+        document
+          .getElementById("email-error-message")
+          .classList.remove("hidden");
+        document.getElementById("email").classList.remove("input-default");
+        document.getElementById("email").classList.add("input-error");
+      }
+
+      if (message === "") {
+        document
+          .getElementById("message-error-message")
+          .classList.remove("hidden");
+        document.getElementById("message").classList.remove("input-default");
+        document.getElementById("message").classList.add("input-error");
+      }
+
+      if (name === "" || email === "" || message === "") {
+        return;
+      }
+
+      document.getElementById("send-btn").disabled = true;
+      document.getElementById("send-btn").classList.add("cursor-not-allowed");
+      this.sendingEmail = true;
 
       email = email.toLowerCase();
 
@@ -101,12 +185,22 @@ export default {
           //   successfullySended.style.display = "none";
           // }, 2000);
           console.log("Message sent");
+          document.getElementById("send-btn").disabled = false;
+          document
+            .getElementById("send-btn")
+            .classList.remove("cursor-not-allowed");
+          this.sendingEmail = false;
         } else {
           // errorSend.style.display = "block";
           // setTimeout(function () {
           //   errorSend.style.display = "none";
           // }, 2000);
           console.log("An error ocurred while sending the email");
+          document.getElementById("send-btn").disabled = false;
+          document
+            .getElementById("send-btn")
+            .classList.remove("cursor-not-allowed");
+          this.sendingEmail = false;
         }
         document.getElementById("contact-form").reset();
       });
@@ -127,7 +221,18 @@ export default {
           flex
           space-x-2
           font-semibold
-          hover:bg-transparent
-          hover:text-purple-600;
+          hover:bg-purple-700;
+}
+
+.error-text {
+  @apply text-red-500 text-sm mt-1;
+}
+
+.input-default {
+  @apply border-purple-400 focus:border-purple-600;
+}
+
+.input-error {
+  @apply border-red-500;
 }
 </style>
