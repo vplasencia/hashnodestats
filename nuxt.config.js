@@ -106,6 +106,13 @@ export default {
 
   loading: "~/components/Preloader.vue",
 
+  env: {
+    HOST: process.env.HOST,
+    USERNAME: process.env.USERNAME,
+    PASSWORD: process.env.PASSWORD,
+    EMAIL: process.env.EMAIL
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 

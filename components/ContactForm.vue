@@ -81,6 +81,10 @@ export default {
       let email = document.getElementById("email").value;
       let message = document.getElementById("message").value;
 
+      console.log(name,email,message);
+
+      console.log(process.env.EMAIL)
+
       email = email.toLowerCase();
 
       Email.send({
@@ -104,7 +108,7 @@ export default {
           // setTimeout(function () {
           //   errorSend.style.display = "none";
           // }, 2000);
-          console.log("An error acurred while sending the email");
+          console.log("An error ocurred while sending the email", res);
         }
         document.getElementById("contact-form").reset();
       });
