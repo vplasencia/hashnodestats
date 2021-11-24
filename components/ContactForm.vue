@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center my-5 py-5">
-    <form action="" class="space-y-5" @submit.prevent="sendEmail()" novalidate>
+    <form id="contact-form" class="space-y-5" @submit.prevent="sendEmail()" novalidate>
       <div class="space-y-2">
         <label for="name">Name</label>
         <input
@@ -13,8 +13,7 @@
             w-full
             border-purple-400 border-2
             rounded-lg
-            focus:outline-none
-            focus:border-purple-600
+            focus:outline-none focus:border-purple-600
           "
         />
       </div>
@@ -30,8 +29,7 @@
             w-full
             border-purple-400 border-2
             rounded-lg
-            focus:outline-none
-            focus:border-purple-600
+            focus:outline-none focus:border-purple-600
           "
         />
       </div>
@@ -47,8 +45,7 @@
             w-full
             border-purple-400 border-2
             rounded-lg
-            focus:outline-none
-            focus:border-purple-600
+            focus:outline-none focus:border-purple-600
           "
         ></textarea>
       </div>
@@ -77,7 +74,43 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    sendEmail() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let message = document.getElementById("message").value;
+
+      email = email.toLowerCase();
+
+      Email.send({
+        Host: process.env.HOST,
+        Username: process.env.USERNAME,
+        Password: process.env.PASSWORD,
+        To: process.env.EMAIL,
+        From: process.env.EMAIL,
+        Subject: name + " sent you a message from " + email,
+        Body: message,
+      }).then((res) => {
+        // alert(message);
+        if (res === "OK") {
+          // successfullySended.style.display = "block";
+          // setTimeout(function () {
+          //   successfullySended.style.display = "none";
+          // }, 2000);
+          console.log("Message sent");
+        } else {
+          // errorSend.style.display = "block";
+          // setTimeout(function () {
+          //   errorSend.style.display = "none";
+          // }, 2000);
+          console.log("An error acurred while sending the email");
+        }
+        document.getElementById("contact-form").reset();
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>

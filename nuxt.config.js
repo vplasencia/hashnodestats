@@ -5,11 +5,22 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Hashnode Stats",
-    meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "Hashnode Stats" },
-      { name: "format-detection", content: "telephone=no" },
+    meta: [{
+        charset: "utf-8"
+      },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1"
+      },
+      {
+        hid: "description",
+        name: "description",
+        content: "Hashnode Stats"
+      },
+      {
+        name: "format-detection",
+        content: "telephone=no"
+      },
       // Twitter
       // Test on: https://cards-dev.twitter.com/validator
       {
@@ -45,7 +56,11 @@ export default {
         property: "og:site_name",
         content: "Hashnode Stats"
       },
-      { hid: "og:type", property: "og:type", content: "website" },
+      {
+        hid: "og:type",
+        property: "og:type",
+        content: "website"
+      },
       {
         hid: "og:url",
         property: "og:url",
@@ -77,7 +92,16 @@ export default {
         content: "Hashnode Stats"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{
+      rel: "icon",
+      type: "image/x-icon",
+      href: "/favicon.ico"
+    }],
+    script: [{
+      src: "https://smtpjs.com/v3/smtp.js",
+      async: true,
+      defer: true
+    }]
   },
 
   loading: "~/components/Preloader.vue",
@@ -86,8 +110,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: "~/plugins/apexCharts.js", mode: "client" } // only on client side
+  plugins: [{
+      src: "~/plugins/apexCharts.js",
+      mode: "client"
+    } // only on client side
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
