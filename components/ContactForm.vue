@@ -218,10 +218,6 @@ export default {
       }).then((res) => {
         // alert(message);
         if (res === "OK") {
-          // successfullySended.style.display = "block";
-          // setTimeout(function () {
-          //   successfullySended.style.display = "none";
-          // }, 2000);
           // console.log("Message sent");
           document.getElementById("send-btn").disabled = false;
           document
@@ -238,11 +234,7 @@ export default {
             successfullySended.classList.add("hidden");
           }, 2000);
         } else {
-          // errorSend.style.display = "block";
-          // setTimeout(function () {
-          //   errorSend.style.display = "none";
-          // }, 2000);
-          console.log("An error ocurred while sending the email");
+          // console.log("An error ocurred while sending the email");
           document.getElementById("send-btn").disabled = false;
           document
             .getElementById("send-btn")
