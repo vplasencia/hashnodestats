@@ -89,6 +89,44 @@
           </svg>
         </button>
       </div>
+      <div class="flex place-content-center">
+        <div id="successfully-sended" class="space-x-1 text-green-600 hidden">
+          <span>Sent successfully</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-check"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div id="error-send" class="space-x-1 text-red-600 hidden">
+          <span>Send failed</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-alert-circle"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+      </div>
     </form>
   </div>
 </template>
@@ -184,12 +222,21 @@ export default {
           // setTimeout(function () {
           //   successfullySended.style.display = "none";
           // }, 2000);
-          console.log("Message sent");
+          // console.log("Message sent");
           document.getElementById("send-btn").disabled = false;
           document
             .getElementById("send-btn")
             .classList.remove("cursor-not-allowed");
           this.sendingEmail = false;
+          let successfullySended = document.getElementById(
+            "successfully-sended"
+          );
+          successfullySended.classList.remove("hidden");
+          successfullySended.classList.add("flex");
+          setTimeout(function () {
+            successfullySended.classList.remove("flex");
+            successfullySended.classList.add("hidden");
+          }, 2000);
         } else {
           // errorSend.style.display = "block";
           // setTimeout(function () {
@@ -201,6 +248,13 @@ export default {
             .getElementById("send-btn")
             .classList.remove("cursor-not-allowed");
           this.sendingEmail = false;
+          let errorSend = document.getElementById("error-send");
+          errorSend.classList.remove("hidden");
+          errorSend.classList.add("flex");
+          setTimeout(function () {
+            errorSend.classList.remove("flex");
+            errorSend.classList.add("hidden");
+          }, 2000);
         }
         document.getElementById("contact-form").reset();
       });
