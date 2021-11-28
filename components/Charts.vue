@@ -144,7 +144,27 @@
                 <tr v-for="i in postIndex" :key="i">
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex items-center">
-                      <div>{{ postsTitle[i - 1] }}</div>
+                      <!-- <div>{{ postsTitle[i - 1] }}</div> -->
+                      <a
+                        :href="
+                          user.publicationDomain !== null &&
+                          user.publicationDomain !== ''
+                            ? 'http://' +
+                              user.publicationDomain +
+                              '/' +
+                              postsIdSlug[postsId[i - 1]]
+                            : user.publicationDomain === null
+                            ? 'https://hashnode.com/@' + user.username
+                            : 'https://' +
+                              user.username +
+                              '.hashnode.dev/' +
+                              postsIdSlug[postsId[i - 1]]
+                        "
+                        target="_blank"
+                        rel="noreferrer noopener nofollow"
+                        class="post-title"
+                        >{{ postsIdTitle[postsId[i - 1]] }}</a
+                      >
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
@@ -254,6 +274,9 @@ export default {
       postsReactions: null,
       postIndex: 0,
       chartsInstances: [],
+      postsIdTitle: {},
+      postsIdSlug: {},
+      postsId: [],
     };
   },
   async mounted() {
@@ -292,7 +315,10 @@ export default {
     this.dateJoined = dayjs(this.user.dateJoined);
     this.userInfo = true;
 
-    if (this.user.publicationDomain === null && this.user.username !== "hashnode") {
+    if (
+      this.user.publicationDomain === null &&
+      this.user.username !== "hashnode"
+    ) {
       this.posts = [];
       this.solveCharts();
       return;
@@ -302,7 +328,7 @@ export default {
     this.posts = await chartFunctions.getAllPosts(this.userName);
     // console.log(this.posts);
     this.solveCharts();
-    utils.sortArrays(this.postsTitle, this.postsReactions);
+    utils.sortArrays(this.postsId, this.postsReactions);
     // console.log("posts", this.postsTitle.length);
     if (this.postsTitle.length > 4) {
       this.postIndex = 5;
@@ -319,6 +345,9 @@ export default {
       let weekDayPosts = [0, 0, 0, 0, 0, 0, 0];
       let monthsPosts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       for (let i = 0; i < this.posts.length; i++) {
+        this.postsId.push(this.posts[i]._id);
+        this.postsIdTitle[this.posts[i]._id] = this.posts[i].title;
+        this.postsIdSlug[this.posts[i]._id] = this.posts[i].slug;
         this.postsTitle.push(this.posts[i].title);
         this.postsReactions.push(this.posts[i].totalReactions);
         let date = new Date(this.posts[i].dateAdded);
@@ -540,11 +569,11 @@ export default {
         //   287
         // );
         doc.textWithLink(
-        "Hashnode Stats",
-        doc.internal.pageSize.width - textW - 10,
-        287,
-        { url: "https://hashnodestats.netlify.app/" }
-      );
+          "Hashnode Stats",
+          doc.internal.pageSize.width - textW - 10,
+          287,
+          { url: "https://hashnodestats.netlify.app/" }
+        );
       }
     },
     async generatePdfReport() {
@@ -613,5 +642,9 @@ svg {
           font-semibold
           hover:bg-transparent
           hover:text-purple-600;
+}
+
+.post-title {
+  @apply underline hover:no-underline;
 }
 </style>

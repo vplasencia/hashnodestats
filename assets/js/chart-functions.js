@@ -13,6 +13,8 @@ const GET_USER_ARTICLES = `
                     dateFeatured
                     totalReactions
                     title
+                    _id
+                    slug
                 }
             }
         }
