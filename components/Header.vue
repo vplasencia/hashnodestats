@@ -5,7 +5,8 @@
         <div class="logo">
           <!-- <div>Hashnode</div>
           <div>Stats</div> -->
-          <p>Hashnode Stats</p>
+          <!-- <p>Hashnode Stats</p> -->
+          <img src="/logo.svg" alt="Hashnode Stats Logo" width="130">
         </div>
       </NuxtLink>
     </div>
