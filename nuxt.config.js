@@ -46,7 +46,7 @@ export default {
       {
         hid: "twitter:image",
         name: "twitter:image",
-        content: "https://hashnodestats.netlify.app/social-media.png"
+        content: "https://hashnodestats.netlify.app/social-media.jpg"
       },
 
       // Open Graph
@@ -79,12 +79,12 @@ export default {
       {
         hid: "og:image",
         property: "og:image",
-        content: "https://hashnodestats.netlify.app/social-media.png"
+        content: "https://hashnodestats.netlify.app/social-media.jpg"
       },
       {
         hid: "og:image:secure_url",
         property: "og:image:secure_url",
-        content: "https://hashnodestats.netlify.app/social-media.png"
+        content: "https://hashnodestats.netlify.app/social-media.jpg"
       },
       {
         hid: "og:image:alt",
@@ -164,7 +164,7 @@ export default {
       theme_color: "#7C3AED"
     },
     icon: {
-      fileName: "app-icon.png"
+      fileName: "app-icon.jpg"
     }
   },
 
