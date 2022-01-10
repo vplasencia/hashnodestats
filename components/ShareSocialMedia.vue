@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative container flex justify-center items-center">
+    <div class="relative container flex justify-center items-center" v-on-clickaway="closeShareBtn">
       <button
         id="share"
         aria-label="share"
@@ -169,7 +169,9 @@
 </template>
 
 <script>
+import { mixin as clickaway } from "vue-clickaway";
 export default {
+  mixins: [clickaway],
   methods: {
     shareClick() {
       let shareIcons = document.getElementById("share-icons");
@@ -187,6 +189,10 @@ export default {
       inputElem.select();
       document.execCommand("copy");
       inputElem.remove();
+    },
+    closeShareBtn() {
+      let shareIcons = document.getElementById("share-icons");
+      shareIcons.classList.add("hidden");
     },
   },
 };
