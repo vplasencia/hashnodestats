@@ -8,7 +8,7 @@
       </div>
       <div class="my-5 flex items-center justify-center">
         <NuxtLink
-          to="/yosracodes"
+          to="/vivianplasencia"
           class="
             rounded-lg
             border-2 border-purple-600
@@ -35,7 +35,7 @@
           id="userName"
           name="userName"
           type="text"
-          placeholder="yosracodes"
+          placeholder="vivianplasencia"
           autocomplete="off"
           value=""
           class="

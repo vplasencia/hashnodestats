@@ -12,6 +12,7 @@
     "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/robots": "^2.5.0",
+    "caniuse-lite": "^1.0.30001364",
     "core-js": "^3.15.1",
     "dayjs": "^1.10.7",
     "graphql-tag": "^2.12.5",
