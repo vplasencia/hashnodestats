@@ -145,7 +145,7 @@
       </div>
     </div>
 
-    <div class="px-2 my-10">
+    <!-- <div class="px-2 my-10">
       <div>
         <div
           class="
@@ -177,7 +177,7 @@
           >
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
