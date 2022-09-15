@@ -2,7 +2,7 @@
 
 ![social-media](https://user-images.githubusercontent.com/52170174/190514449-516e4d19-a2bd-44a7-b029-4af7a6a1c206.png)
 
-Hashnode Stats allows you to view statistics of your Hashnode Blog.
+Hashnode Stats allows you to view and share statistics of your Hashnode Blog.
 
 Hashnode Stats link:
 <https://hashnodestats.vercel.app/>
