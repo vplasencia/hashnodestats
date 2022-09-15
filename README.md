@@ -1,4 +1,4 @@
-# WhatsApp Chats
+# Hashnode Stats
 
 Hashnode Stats allows you to view statistics of your Hashnode Blog.
 
