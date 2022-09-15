@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex justify-center mt-10 text-lg px-2">
     <div>
-      Hashnode Stats allows you to view statistics of your
+      Hashnode Stats allows you to view and share statistics of your
       <a
         target="_blank"
         rel="noreferrer noopener nofollow"
