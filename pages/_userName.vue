@@ -320,7 +320,7 @@ export default {
         {
           hid: "twitter:image",
           name: "twitter:image",
-          content: "https://hashnodestats.netlify.app/social-media.jpg",
+          content: "https://hashnodestats.vercel.app/social-media.jpg",
         },
         {
           hid: "twitter:image:alt",
@@ -340,12 +340,12 @@ export default {
         {
           hid: "og:image",
           property: "og:image",
-          content: "https://hashnodestats.netlify.app/social-media.jpg",
+          content: "https://hashnodestats.vercel.app/social-media.jpg",
         },
         {
           hid: "og:image:secure_url",
           property: "og:image:secure_url",
-          content: "https://hashnodestats.netlify.app/social-media.jpg",
+          content: "https://hashnodestats.vercel.app/social-media.jpg",
         },
         {
           hid: "og:image:alt",

@@ -57,7 +57,7 @@
           :href="
             'https://twitter.com/intent/tweet/?text=' +
             $route.params.userName +
-            '%20Hashnode%20Stats&url=https://hashnodestats.netlify.app/' +
+            '%20Hashnode%20Stats&url=https://hashnodestats.vercel.app/' +
             $route.params.userName
           "
           title="Share Twitter"
@@ -98,7 +98,7 @@
             cursor-pointer
           "
           :href="
-            'https://www.linkedin.com/sharing/share-offsite/?url=https://hashnodestats.netlify.app/' +
+            'https://www.linkedin.com/sharing/share-offsite/?url=https://hashnodestats.vercel.app/' +
             $route.params.userName
           "
           title="Share LinkedIn"

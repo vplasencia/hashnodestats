@@ -572,7 +572,7 @@ export default {
           "Hashnode Stats",
           doc.internal.pageSize.width - textW - 10,
           287,
-          { url: "https://hashnodestats.netlify.app/" }
+          { url: "https://hashnodestats.vercel.app/" }
         );
       }
     },
