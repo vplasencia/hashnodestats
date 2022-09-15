@@ -7,7 +7,17 @@
             href="https://github.com/vplasencia/hashnodestats"
             target="_blank"
             rel="noreferrer noopener nofollow"
-            class="p-3 flex gap-2 hover:bg-gray-200 rounded-lg text-purple-500 transition-colors duration-100 ease-linear"
+            class="
+              p-3
+              flex
+              gap-2
+              hover:bg-gray-200
+              rounded-lg
+              text-purple-500
+              transition-colors
+              duration-100
+              ease-linear
+            "
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -38,7 +48,13 @@
             <span>❤️</span>
             <span>by</span>
             <a
-              class="text-purple-700 hover:underline"
+              class="
+                text-purple-700
+                hover:underline
+                transition-colors
+                duration-100
+                ease-linear
+              "
               href="https://twitter.com/ViviPlasenciaC"
               >Vivian Plasencia</a
             >
