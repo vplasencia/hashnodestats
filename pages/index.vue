@@ -19,6 +19,8 @@
             transition-colors
             hover:text-white
             font-semibold
+            duration-100
+            ease-linear
           "
           >See Demo</NuxtLink
         >
@@ -122,8 +124,21 @@
         <div>
           <div class="title-faqs">&bull; What is Hashnode?</div>
           <div>
-            Hashnode is a free blogging platform built for developers by developers. Blog on
-            personal domain, share ideas, and connect with the global dev
+            <a
+              href="https://hashnode.com/"
+              target="_blank"
+              rel="noreferrer noopener nofollow"
+              class="
+                text-purple-700
+                hover:underline
+                transition-all
+                duration-100
+                ease-linear
+              "
+              >Hashnode</a
+            >
+            is a free blogging platform built for developers by developers. Blog
+            on personal domain, share ideas, and connect with the global dev
             community!
           </div>
         </div>
@@ -136,7 +151,13 @@
                 href="https://api.hashnode.com/"
                 target="_blank"
                 rel="noreferrer noopener nofollow"
-                class="text-purple-700 hover:underline hover:text-purple-800"
+                class="
+                  text-purple-700
+                  hover:underline
+                  transition-all
+                  duration-100
+                  ease-linear
+                "
                 >Hashnode api</a
               >.</span
             >

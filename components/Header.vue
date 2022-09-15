@@ -1,15 +1,13 @@
 <template>
-  <nav>
-    <div>
-      <NuxtLink to="/">
-        <div class="logo">
-          <!-- <div>Hashnode</div>
-          <div>Stats</div> -->
-          <!-- <p>Hashnode Stats</p> -->
-          <img src="/logo.svg" alt="Hashnode Stats Logo" width="140">
-        </div>
-      </NuxtLink>
-    </div>
+  <nav class="flex justify-between items-center">
+    <NuxtLink to="/">
+      <div class="logo">
+        <img src="/logo.svg" alt="Hashnode Stats Logo" width="140" />
+      </div>
+    </NuxtLink>
+    <NuxtLink to="/about">
+      <div class="aboutLink">About</div>
+    </NuxtLink>
   </nav>
 </template>
 
@@ -19,10 +17,14 @@ export default {};
 
 <style scoped>
 nav {
-  @apply flex justify-between items-center py-3 pl-3 pr-3 w-full;
+  @apply flex justify-between items-center py-5 px-5 md:px-10 w-full;
 }
 
 .logo {
   @apply text-center font-bold text-lg text-purple-600;
+}
+
+.aboutLink {
+  @apply rounded-lg text-lg text-purple-600 py-3 px-5 hover:bg-gray-100 transition-colors font-semibold duration-100 ease-linear;
 }
 </style>
