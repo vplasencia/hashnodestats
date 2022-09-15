@@ -61,7 +61,7 @@
                   ? 'http://' + user.publicationDomain
                   : user.publicationDomain === null
                   ? 'https://hashnode.com/@' + user.username
-                  : 'https://' + user.username + '.hashnode.dev/'
+                  : 'https://' + user.blogHandle + '.hashnode.dev/'
               "
               target="_blank"
               rel="noreferrer noopener nofollow"
@@ -287,6 +287,7 @@ export default {
             username
             dateJoined
             numReactions
+            blogHandle
             socialMedia {
               twitter
               github
