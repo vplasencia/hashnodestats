@@ -31,4 +31,16 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Application Screenshot
+## Application Images
+
+### Main page
+
+![Screenshot1](https://user-images.githubusercontent.com/52170174/190838248-9aba010a-2372-41bd-889b-232634ca6dd7.png)
+
+### User statistics page
+
+![Screenshot2](https://user-images.githubusercontent.com/52170174/190838253-d4188a09-5fe4-441a-972d-b851037955ec.png)
+
+![Screenshot3](https://user-images.githubusercontent.com/52170174/190838257-318e7633-9b57-40e4-b8fa-85a33c949f19.png)
+
+![Screenshot4](https://user-images.githubusercontent.com/52170174/190838262-73881fbf-3702-461d-a420-8b6e1513a908.png)
