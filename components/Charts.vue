@@ -75,14 +75,14 @@
       <div
         class="chart-wrapper w-full border-2 rounded-lg p-2 md:p-5 shadow-md"
       >
-        <ChartPreloader v-if="!hola" />
-        <div class="chart" v-show="hola" id="postsPerWeekDay"></div>
+        <ChartPreloader v-if="!readyPostsPerWeekDayChart" />
+        <div class="chart" v-show="readyPostsPerWeekDayChart" id="postsPerWeekDay"></div>
       </div>
       <div
         class="chart-wrapper w-full border-2 rounded-lg p-2 md:p-5 shadow-md"
       >
-        <ChartPreloader v-if="!hola1" />
-        <div class="chart" v-show="hola1" id="postsPerMonth"></div>
+        <ChartPreloader v-if="!readyPostsPerMonthChart" />
+        <div class="chart" v-show="readyPostsPerMonthChart" id="postsPerMonth"></div>
       </div>
     </div>
     <div class="flex flex-col place-content-center my-10">
@@ -238,14 +238,14 @@ import "dayjs/locale/es";
 var localizedFormat = require("dayjs/plugin/localizedFormat");
 dayjs.extend(localizedFormat);
 
-const userNameInfo = gql`
-  query user($userName: String!) {
-    user(username: $userName) {
-      numFollowing
-      numFollowers
-    }
-  }
-`;
+// const userNameInfo = gql`
+//   query user($userName: String!) {
+//     user(username: $userName) {
+//       numFollowing
+//       numFollowers
+//     }
+//   }
+// `;
 
 export default {
   // apollo: {
@@ -262,8 +262,8 @@ export default {
   },
   data() {
     return {
-      hola: false,
-      hola1: false,
+      readyPostsPerWeekDayChart: false,
+      readyPostsPerMonthChart: false,
       userData: {},
       posts: null,
       userName: this.$route.params.userName,
@@ -284,10 +284,10 @@ export default {
     // let temp = await this.$apollo.queries.user;
 
     // setTimeout(() => {
-    //   this.hola = true;
+    //   this.readyPostsPerWeekDayChart = true;
     // }, 3000);
     // setTimeout(() => {
-    //   this.hola1 = true;
+    //   this.readyPostsPerMonthChart = true;
     // }, 2000);
 
     Apex.chart = {
@@ -360,7 +360,7 @@ export default {
         }
       }
       // console.log(weekDayPosts);
-      this.hola = true;
+      this.readyPostsPerWeekDayChart = true;
       let chartPostsPerWeekDay = buildCharts.buildRadarChart(
         this.user.username,
         "postsPerWeekDay",
@@ -368,7 +368,7 @@ export default {
         weekDayPosts,
         "Posts Per Day of the Week"
       );
-      this.hola1 = true;
+      this.readyPostsPerMonthChart = true;
       let chartPostsPerMonth = buildCharts.buildRadarChart(
         this.user.username,
         "postsPerMonth",

@@ -213,7 +213,7 @@
         </div>
       </div>
       <div class="mt-10">
-        <Charts :user="user" :posts="posts" />
+        <Charts :user="user" />
       </div>
     </div>
   </div>
@@ -236,19 +236,19 @@ import * as graphqlQueries from "~/assets/js/graphql-query.js";
 //     }
 // `;
 
-const GET_USER_ARTICLES = gql`
-  query GetUserArticles($page: Int!, $userName: String!) {
-    user(username: $userName) {
-      publication {
-        posts(page: $page) {
-          title
-          brief
-          slug
-        }
-      }
-    }
-  }
-`;
+// const GET_USER_ARTICLES = gql`
+//   query GetUserArticles($page: Int!, $userName: String!) {
+//     user(username: $userName) {
+//       publication {
+//         posts(page: $page) {
+//           title
+//           brief
+//           slug
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default {
   // async asyncData({params}) {

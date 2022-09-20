@@ -83,17 +83,6 @@
         </div>
       </div>
     </form>
-    <!-- <p>numFollowing: {{ user.numFollowing }}</p>
-    <p>numFollowers: {{ user.numFollowers }}</p> -->
-    <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-10 px-2">
-      <div class="chart-wrapper w-full border-2 rounded-lg p-2 md:p-5 shadow">
-        <div class="chart" id="chart"></div>
-      </div>
-      <div class="chart-wrapper w-full border-2 rounded-lg p-2 md:p-5 shadow">
-        <div class="chart" id="chart1"></div>
-      </div>
-    </div> -->
-    <!-- <Charts v-if="analyze" :userName="userName" /> -->
 
     <div class="flex justify-center items-center my-10 px-2">
       <div
