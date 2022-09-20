@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="relative container flex justify-center items-center" v-on-clickaway="closeShareBtn">
+    <div
+      class="relative container flex justify-center items-center"
+      v-on-clickaway="closeShareBtn"
+    >
       <button
         id="share"
         aria-label="share"
@@ -198,5 +201,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#share-icons {
+  animation: 0.5s appear;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+}
 </style>
